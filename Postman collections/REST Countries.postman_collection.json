@@ -1,0 +1,503 @@
+{
+	"info": {
+		"_postman_id": "d425a959-2ddf-4c7c-b04b-665ecef598db",
+		"name": "REST Countries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9882887"
+	},
+	"item": [
+		{
+			"name": "Main Page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all Countries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains 250 items representing countries\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(250);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"First country common name is Germany\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name.common).to.eql(\"Germany\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Last country common name is Micronesia\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[249].name.common).to.eql(\"Micronesia\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/all",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (cca2-valid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct country name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name.common).to.eql(\"Malaysia\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/my",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"my"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (cca3-valid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct country name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name.common).to.eql(\"Austria\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/aut",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"aut"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (ccn3-valid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct country name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name.common).to.eql(\"Cuba\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/192",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"192"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (cioc-valid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct country name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name.common).to.eql(\"Germany\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/ger",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"ger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (blank-invalid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (short-invalid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/a",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (long-invalid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/abcdef",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"abcdef"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (cca2-invalid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/xy",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"xy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (cca3/cioc-invalid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/xyz",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"xyz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Country Data (ccn3-invalid)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 4000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/v3.1/alpha/101",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"101"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
